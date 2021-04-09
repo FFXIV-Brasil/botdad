@@ -1,0 +1,28 @@
+version: '3.7'
+volumes:
+  yarn_cache:
+    external: true
+    name: yarn_global_cache
+services:
+  server: &node
+    image: node:15.5.1-alpine
+    entrypoint: ''
+    working_dir: /app
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        source: yarn_cache
+        target: /usr/local/share/.yarn/berry/cache
+  repl:
+    <<: *node
+    environment:
+      NODE_REPL_HISTORY: ./.node_repl_history
+    tty: true
+    stdin_open: true
+    command: yarn node --experimental-repl-await --experimental-loader ./experimental-pnp-esm-loader.mjs
+  vscode:
+    <<: *node
+    tty: true
+    command: sh

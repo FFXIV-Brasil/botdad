@@ -1,0 +1,12 @@
+{
+  "db": {
+    "define": {
+      "paranoid": true,
+      "underscored": true
+    },
+    "query": {},
+    "set": {},
+    "sync": {},
+    "logQueryParameters": true
+  }
+}

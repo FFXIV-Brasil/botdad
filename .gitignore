@@ -1,0 +1,12 @@
+.node_repl_history
+.pnp.cjs
+/db/*.sqlite3
+
+env.json
+/db/env.json
+
+.yarn/*
+!.yarn/releases
+!.yarn/sdks
+
+.pnp/*
